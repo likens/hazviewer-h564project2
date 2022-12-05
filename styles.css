@@ -1,0 +1,733 @@
+:root {
+    --transparent: rgba(0,0,0,0);
+    --white: rgba(255,255,255,1);
+    --black: rgba(0,0,0,1);
+    --font: 'Inconsolata', sans-serif;
+}
+*, 
+*:before, 
+*:after {
+    box-sizing: border-box;
+    user-select: none;
+}
+
+img {
+    pointer-events: none;
+}
+
+html {
+    font-family: var(--font);
+	font-size: 62.5%;
+	text-size-adjust: 100%;
+}
+
+body {
+    line-height: 1;
+    background: var(--white);
+    color: var(--black);
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    font-size: 1.6rem;
+}
+
+.master {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.view {
+    position: fixed;
+    width: 120rem;
+    height: 80rem;
+    left: 50%;
+    top: 10rem;
+    transform: translate(-50%, 0);
+    border: 3px solid var(--black);
+    overflow: hidden;
+}
+
+.view .header,
+.view .footer {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    /* background: rgba(0,0,0,.5);
+    backdrop-filter: blur(1rem); */
+}
+
+.view .header {
+    top: 0rem;
+}
+
+.view .footer {
+    bottom:0;
+}
+
+.global {
+    position: absolute;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+}
+
+.goggles {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+}
+
+.goggles .upper,
+.goggles .lower {
+    position: absolute;
+    width: 160rem;
+    height: 70rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 10;
+    left: -20rem;
+}
+
+.goggles .upper {
+    top: -5rem;
+    background-image: url(img/goggles-upper.svg);
+}
+
+.goggles .lower {
+    bottom: -10rem;
+    background-image: url(img/goggles-lower.svg);
+}
+
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.background.nuclear {
+    background: url(img/nuclear.jpg) no-repeat left center;
+    background-size: cover;
+}
+
+.background.chemical {
+    background: url(img/chemical.jpeg) no-repeat left center;
+    background-size: cover;
+}
+
+.background.gas {
+    background: url(img/gas.jpeg) no-repeat left center;
+    background-size: cover;
+}
+
+.background.start {
+    background: url(img/start.jpg) no-repeat left center;
+    background-size: cover;
+}
+
+.start .info,
+.start .warning {
+    display: none;
+}
+
+.heatmap {
+    width: 100%;
+    height: 100%;
+}
+
+.triangle {
+    background: gold;
+    position: absolute;
+    z-index: 5;
+    box-shadow: 0 0 1rem rgba(0,0,0,1);
+}
+
+.triangle:before,
+.triangle:after {
+    content: '';
+    position: absolute;
+    background-color: inherit;
+}
+
+.triangle,
+.triangle:before,
+.triangle:after {
+	width:  4rem;
+	height: 4rem;
+	border-top-right-radius: 30%;
+}
+
+.triangle {
+	transform: rotate(-60deg) skewX(-30deg) scale(1,.866);
+}
+.triangle:before {
+	transform: rotate(-135deg) skewX(-45deg) scale(1.414,.707) translate(0,-50%);
+}
+.triangle:after {
+	transform: rotate(135deg) skewY(-45deg) scale(.707,1.414) translate(50%);
+}
+
+.radiation,
+.poison,
+.exclamation {
+    position:absolute;
+    z-index: 10;
+    width: 3rem;
+    height: 3rem;
+    top: 1.5rem;
+    left: .5rem;
+}
+
+.warning {
+    position: absolute;
+}
+
+.warning .line {
+    position: absolute;
+    top: 5rem;
+    left: 1.7rem;
+    background: linear-gradient(to bottom, gold 25%, transparent);
+    height: 10rem;
+    width: .5rem;
+}
+
+.info {
+    position: absolute;
+    backdrop-filter: blur(1rem);
+    background: rgba(0,0,0,.5);
+    padding: 1rem;
+    color: var(--white);
+    border: .5rem solid gold;
+    border-radius: 1rem;
+    display: grid;
+    gap: 1rem;
+    box-shadow: 0 0 1rem rgba(0,0,0,1);
+}
+
+.info .title {
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+.info .stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+
+.info .stat {
+    text-align: center;
+    display: grid;
+    gap: .5rem;
+}
+
+.info span {
+    font-weight: 400;
+    font-size: 1.4rem;
+}
+
+.info .graph {
+    font-weight: 700;
+    font-size: 1.4rem;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin:0 0 1rem;
+}
+
+.info .bar {
+    height: 1rem;
+    width: 100%;
+    background: linear-gradient(to right, blue, green, yellow, orange, red);
+    margin:0 0 .5rem;
+}
+
+.info .line {
+    position: absolute;
+    background: gold;
+    height: .5rem;
+    width: 8rem;
+}
+
+.nuclear .info {
+    bottom: 26rem;
+    left: 48rem;
+}
+
+.nuclear .info .line {
+    bottom: 7rem;
+    right: -8rem;
+}
+
+.nuclear .warning {
+    right: 45rem;
+    top: 45rem;
+}
+
+.nuclear .poison,
+.nuclear .exclamation {
+    display: none;
+}
+
+.nuclear .info--chemical,
+.nuclear .info--gas {
+    display: none;
+}
+
+.chemical .warning {
+    right: 52rem;
+    top: 45rem;
+}
+
+.chemical .warning .line {
+    top: 5rem;
+    left: 1.7rem;
+}
+
+.chemical .info {
+    bottom: 29rem;
+    left: 33rem;
+}
+
+.chemical .info .line {
+    bottom: 2rem;
+    right: -8rem;
+}
+
+.chemical .radiation,
+.chemical .exclamation {
+    display: none;
+}
+
+.chemical .info--nuclear,
+.chemical .info--gas {
+    display: none;
+}
+
+.gas .radiation,
+.gas .poison {
+    display: none;
+}
+
+.gas .exclamation {
+    width: 5rem;
+    height: 5rem;
+    top: 0;
+    left: -.5rem;
+}
+
+.gas .warning {
+    left: 20rem;
+    top: 32rem;
+}
+
+.gas .info--nuclear,
+.gas .info--chemical {
+    display: none;
+}
+
+.gas .info {    
+    bottom: 40rem;
+    left: 30rem;
+}
+
+.gas .info .line {
+    bottom: 3rem;
+    left: -8rem;
+}
+
+.gas .info .stats {
+    display: block;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header > div {
+    
+    backdrop-filter: blur(1rem);
+    background: rgba(0,0,0,.75);
+    padding: 1rem;
+    color: var(--white);
+    text-shadow: 0 0 2px var(--black);
+    font-weight: 700;
+    border-radius:0 0 4rem 4rem;
+    position: absolute;
+}
+
+.header .location {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    max-width: 30rem;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header .location svg {
+    margin: 0 1rem -.25rem 0rem;
+}
+
+.header svg {
+    width: 1.6rem;
+    height: 1.6rem;
+    fill: currentColor;
+}
+
+.header .data {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.header .dir {
+    width: 100%;
+}
+
+.header .connection {
+    width: 15rem;
+    top: 4.5rem;
+    text-align: center;
+    align-items: center;
+    left: 12rem;
+    line-height: 1;
+    transform: rotate(-10deg);
+}
+
+.header .battery {
+    width: 9rem;
+    top: 2.5rem;
+    text-align: center;
+    align-items: center;
+    line-height: 1;
+    left:30rem;
+    transform: rotate(-5deg);
+}
+
+.header .temp {
+    width: 9rem;
+    top: 5.5rem;
+    text-align: center;
+    align-items: center;
+    line-height: 1;
+    right: 10rem;
+    transform: rotate(12deg);
+}
+
+.header .home {
+    width:20rem;
+    top: 2.5rem;
+    text-align: center;
+    align-items: center;
+    line-height: 1;
+    right: 22rem;
+    transform: rotate(5deg);
+}
+
+.header .menu {
+    width:15rem;
+    top: 30rem;
+    text-align: center;
+    align-items: center;
+    line-height: 1;
+    right: -6rem;
+    transform: rotate(-90deg);
+    border-radius: 4rem 4rem 0 0;
+}
+
+.header .mark {
+    width:12rem;
+    top: 30rem;
+    text-align: center;
+    align-items: center;
+    line-height: 1;
+    left: -4.5rem;
+    transform: rotate(90deg);
+    border-radius: 4rem 4rem 0 0;
+}
+
+.header .menu svg,
+.header .mark svg {
+    position: relative;
+    top: .3rem;
+}
+
+.footer .tracker {
+    width: 20rem;
+    height: 4rem;
+    background: #111;
+    border-radius: 50% 50% 0 0;
+    position: absolute;
+    bottom: 0;
+}
+
+.footer .tracker:nth-child(odd) {
+    left: 15.5rem;
+}
+
+.footer .tracker:nth-child(even) {
+    right: 15.5rem;
+}
+
+.footer .tracker:before,
+.footer .tracker:after {
+    content: '';
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: #ccc;
+    top: 50%;
+    transform: translateY(-30%);
+    box-shadow: 0 0 2rem rgba(255,255,255,.9);
+}
+
+.footer .tracker:before {
+    left: 5rem;
+}
+
+.footer .tracker:after {
+    right: 5rem;
+}
+
+.examples {
+    position: absolute;
+    top: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.examples button {
+    border: 0;
+    background: #111;
+    color: var(--white);
+    font-family: inherit;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.examples button:hover {
+    background: #666;
+}
+
+.tooltips {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+
+.tooltips .tooltip {
+    position: absolute;
+}
+
+.tooltip .text {
+    background: #005479; 
+    color:var(--white);
+    padding: 1rem;
+    width: 17rem;
+    font-size: 1.4rem;
+    position:absolute;
+    top:2rem;
+    left:0;
+    z-index: -1;
+    border: 1px solid var(--white);
+    border-radius: 1rem;
+    display: none;
+}
+
+.tooltip--active .text {
+    display: block;
+}
+
+.tooltip--connection {
+    top: 7rem;
+    left: 12rem;
+}
+.tooltip--battery {
+    top: 4rem;
+    left: 29.5rem;
+}
+.tooltip--location {
+    top: 5rem;
+    left: 45rem;
+}
+.tooltip--home {
+    top: 3rem;
+    left: 77rem;
+}
+.tooltip--temp {
+    top: 6rem;
+    left: 100rem;
+}
+.tooltip--mark {
+    top: 26rem;
+    left: 1rem;
+}
+.tooltip--mark .text {
+    left: 3rem;
+    top: 0;
+}
+.tooltip--actions {
+    top: 25rem;
+    left: 116rem;
+}
+.tooltip--actions .text {
+    left: -18rem;
+    top: 0;
+}
+.tooltip--tracker {
+    top: 76rem;
+    left: 84rem;
+}
+.tooltip--tracker .text {
+    top: -13rem;
+}
+.tooltip--outline {
+    top: 62rem;
+    left: 55rem;
+}
+
+.tooltip--data .text {
+    top: -11rem;
+}
+.tooltip--symbol .text {
+    top: -12rem;
+}
+
+.start .tooltip--data,
+.start .tooltip--heatmap,
+.start .tooltip--symbol {
+    display: none;
+}
+
+.nuclear .tooltip--data {
+    top: 37rem;
+    left: 48rem;
+}
+.nuclear .tooltip--heatmap {
+    top: 58rem;
+    left: 75rem;
+}
+.nuclear .tooltip--symbol {
+    top: 44rem;
+    left: 76rem;
+}
+
+.chemical .tooltip--data {
+    top: 45rem;
+    left: 33rem;
+}
+.chemical .tooltip--heatmap {
+    top: 39rem;
+    left: 71rem;
+}
+.chemical .tooltip--symbol {
+    top: 44rem;
+    left: 68rem;
+}
+.gas .tooltip--data {
+    top: 31rem;
+    left: 30rem;
+}
+.gas .tooltip--heatmap {
+    top: 45rem;
+    left: 8rem;
+}
+.gas .tooltip--symbol {
+    top: 31rem;
+    left: 20rem;
+}
+.tooltip .title {
+    font-weight: 700;
+    text-transform: uppercase;
+    padding:0 0 .5rem;
+    font-size: 1.8rem;
+}
+
+.tooltips .circle {
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 2px solid #01a4e9;
+    border-radius: 50%;
+    position: absolute;
+    cursor: pointer;
+}
+
+.tooltips .circle:before {
+    content: '';
+    position: relative;
+    display: block;
+    width: 300%;
+    height: 300%;
+    box-sizing: border-box;
+    margin-left: -100%;
+    margin-top: -100%;
+    border-radius: 45px;
+    background-color: #01a4e9;
+    animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+.tooltips .circle:after {
+    content: '';
+    position: absolute;
+    left: 0; 
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 8px rgba(0,0,0,.3);
+    animation: pulse-dot 1.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) -.4s infinite;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(.33);
+    }
+    80%, 100% {
+        opacity: 0;
+    }
+}
+    
+@keyframes pulse-dot {
+    0% {
+        transform: scale(.8);
+    }
+    50% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(.8);
+    }
+}

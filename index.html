@@ -1,0 +1,280 @@
+<html lang="en">
+    <head>
+        <title>HAZViewer</title>
+        <meta name="viewport" content="width=device-width">
+        <meta name="theme-color" content="#FFFFFF">
+        <meta name="mobile-web-app-capable" content="yes">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;400;700&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <div class="master">
+
+            <div class="examples">
+                <button onclick="changeExample('nuclear')">Nuclear</button>
+                <button onclick="changeExample('chemical')">Chemical</button>
+                <button onclick="changeExample('gas')">Gas</button>
+                <button onclick="changeExample('start')">Reset</button>
+            </div>
+
+            <div class="view">
+
+                <div class="goggles">
+                    <div class="upper"></div>
+                    <div class="lower"></div>
+                </div>
+
+                <div class="global">
+                    <div class="header">
+                        <div class="location">
+                            <div class="data">
+                                <div class="dir"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M256 0c17.7 0 32 14.3 32 32V66.7C368.4 80.1 431.9 143.6 445.3 224H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H445.3C431.9 368.4 368.4 431.9 288 445.3V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V445.3C143.6 431.9 80.1 368.4 66.7 288H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H66.7C80.1 143.6 143.6 80.1 224 66.7V32c0-17.7 14.3-32 32-32zM128 256c0 70.7 57.3 128 128 128s128-57.3 128-128s-57.3-128-128-128s-128 57.3-128 128zm128 80c-44.2 0-80-35.8-80-80s35.8-80 80-80s80 35.8 80 80s-35.8 80-80 80z"/></svg>SSW-223° at</div>
+                                <div class="lat">41.077469,</div>
+                                <div class="lng">-85.137489,</div>
+                                <div class="alt">10 ft.</div>
+                            </div>
+                        </div>
+                        <div class="connection">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M544 0c17.7 0 32 14.3 32 32V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V32c0-17.7 14.3-32 32-32zM416 96c17.7 0 32 14.3 32 32V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V128c0-17.7 14.3-32 32-32zM320 224V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V224c0-17.7 14.3-32 32-32s32 14.3 32 32zM160 288c17.7 0 32 14.3 32 32V480c0 17.7-14.3 32-32 32s-32-14.3-32-32V320c0-17.7 14.3-32 32-32zM64 416v64c0 17.7-14.3 32-32 32s-32-14.3-32-32V416c0-17.7 14.3-32 32-32s32 14.3 32 32z"/></svg>
+                            27.3 mbps
+                        </div>
+                        <div class="battery">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 176c0-44.2 35.8-80 80-80H464c44.2 0 80 35.8 80 80v16c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32v16c0 44.2-35.8 80-80 80H80c-44.2 0-80-35.8-80-80V176zm80-16c-8.8 0-16 7.2-16 16V336c0 8.8 7.2 16 16 16H464c8.8 0 16-7.2 16-16V176c0-8.8-7.2-16-16-16H80zm272 32V320H96V192H352z"/></svg>
+                            77%
+                        </div>
+                        <div class="temp">68° F</div>
+                        <div class="home">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></svg>
+                            N-32°, 450 ft.
+                        </div>
+                        <div class="menu">
+                            ACTIONS
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg>
+                        </div>
+                        <div class="mark">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M384 192c0 87.4-117 243-168.3 307.2c-12.3 15.3-35.1 15.3-47.4 0C117 435 0 279.4 0 192C0 86 86 0 192 0S384 86 384 192z"/></svg>
+                            MARK
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="trackers">
+                            <div class="tracker"></div>
+                            <div class="tracker"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tooltips start" id="tooltips">
+                    <div class="tooltip tooltip--connection">
+                        <div class="circle"></div>
+                        <div class="text">
+                            <div class="title">Connection</div>
+                            Indicates device's connection status with home hub
+                        </div>
+                    </div>
+                    <div class="tooltip tooltip--battery">
+                        <div class="circle"></div>
+                        <div class="text">
+                            <div class="title">Battery</div>
+                            Indicates device's available battery
+                        </div>
+                    </div>
+                    <div class="tooltip tooltip--location">
+                        <div class="circle"></div>
+                        <div class="text">
+                            <div class="title">Location</div>
+                            Indicates devices's current location in latitude, longitude, and altitude. Also provides bearing of where the device is pointing
+                        </div>
+                    </div>
+                    <div class="tooltip tooltip--home">
+                        <div class="circle"></div>
+                        <div class="text">
+                            <div class="title">Home</div>
+                            Indicates direction and distance of device's home hub
+                        </div>
+                    </div>
+                    <div class="tooltip tooltip--temp">
+                        <div class="circle"></div>
+                        <div class="text">
+                            <div class="title">Temperature</div>
+                            Indicates immediate temperature of area around device
+                        </div>
+                    </div>
+                    <div class="tooltip tooltip--mark">
+                        <div class="circle"></div>
+                        <div class="text">
+                            <div class="title">Marking</div>
+                            Clues user to physical button on device to mark a geolocation using infrared beams mounted at top of goggles
+                        </div>
+                    </div>
+                    <div class="tooltip tooltip--actions">
+                        <div class="circle"></div>
+                        <div class="text">
+                            <div class="title">Actions</div>
+                            Clues users to action menu and physical dial to navigate options available
+                        </div>
+                    </div>
+                    <div class="tooltip tooltip--tracker">
+                        <div class="circle"></div>
+                        <div class="text">
+                            <div class="title">Eye Tracking</div>
+                            Eye tracking technology to help device understand what the user is looking at
+                        </div>
+                    </div>
+                    <div class="tooltip tooltip--outline">
+                        <div class="circle"></div>
+                        <div class="text">
+                            <div class="title">Goggle Outline</div>
+                            Where the device's lenses meets the frame
+                        </div>
+                    </div>
+                    <div class="tooltip tooltip--data">
+                        <div class="circle"></div>
+                        <div class="text">
+                            <div class="title">Detection Data</div>
+                            Detects HAZMAT threat and renders easy to read data for quick understanding
+                        </div>
+                    </div>
+                    <div class="tooltip tooltip--heatmap">
+                        <div class="circle"></div>
+                        <div class="text">
+                            <div class="title">Heatmap</div>
+                            Visualizes HAZMAT dangers by using customized heatmaps to show the extent and size of threat
+                        </div>
+                    </div>
+                    <div class="tooltip tooltip--symbol">
+                        <div class="circle"></div>
+                        <div class="text">
+                            <div class="title">Symbology</div>
+                            Utilizes appropriate symbols and iconography to provide immediate threat identity
+                        </div>
+                    </div>
+
+                </div>
+    
+                <div class="background start" id="background">
+
+                    <div class="info info--nuclear">
+                        <div class="line"></div>
+                        <div class="title">Radiation Detected</div>
+                        <div class="graph">
+                            <div class="bar"></div>
+                            <div class="min">29.4</div>
+                            <div class="label">Dose Rate<br/>(µGy/h)</div>
+                            <div class="max">68.2</div>
+                        </div>
+                        <div class="stats">
+                            <div class="stat">
+                                <span class="lbl">Gamma</span>116 cps
+                            </div>
+                            <div class="stat">
+                                <span class="lbl">Neutron</span>54 cps
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info info--chemical">
+                        <div class="line"></div>
+                        <div class="title">Category II Toxins Detected</div>
+                    </div>
+
+                    <div class="info info--gas">
+                        <div class="line"></div>
+                        <div class="title">Carbon Monoxide Detected</div>
+                        <div class="stats">
+                            <div class="stat">Measuring > 250 ppm</div>
+                        </div>
+                    </div>
+
+                    <div class="warning">
+                        <div class="line"></div>
+                        <div class="triangle"></div>
+                        <svg class="radiation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M216 186.7c-23.9 13.8-40 39.7-40 69.3L32 256C14.3 256-.2 241.6 2 224.1C10.7 154 47.8 92.7 101.3 52c14.1-10.7 33.8-5.3 42.7 10l72 124.7zM256 336c14.6 0 28.2-3.9 40-10.7l72 124.8c8.8 15.3 3.7 35.1-12.6 41.9c-30.6 12.9-64.2 20-99.4 20s-68.9-7.1-99.4-20c-16.3-6.9-21.4-26.6-12.6-41.9l72-124.8c11.8 6.8 25.4 10.7 40 10.7zm224-80l-144 0c0-29.6-16.1-55.5-40-69.3L368 62c8.8-15.3 28.6-20.7 42.7-10c53.6 40.7 90.6 102 99.4 172.1c2.2 17.5-12.4 31.9-30 31.9zM256 304c-26.5 0-48-21.5-48-48s21.5-48 48-48s48 21.5 48 48s-21.5 48-48 48z"/></svg>
+                        <svg class="poison" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M400 128c0 44.4-25.4 83.5-64 106.4V256c0 17.7-14.3 32-32 32H208c-17.7 0-32-14.3-32-32V234.4c-38.6-23-64-62.1-64-106.4C112 57.3 176.5 0 256 0s144 57.3 144 128zM200 176c17.7 0 32-14.3 32-32s-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32zm144-32c0-17.7-14.3-32-32-32s-32 14.3-32 32s14.3 32 32 32s32-14.3 32-32zM35.4 273.7c7.9-15.8 27.1-22.2 42.9-14.3L256 348.2l177.7-88.8c15.8-7.9 35-1.5 42.9 14.3s1.5 35-14.3 42.9L327.6 384l134.8 67.4c15.8 7.9 22.2 27.1 14.3 42.9s-27.1 22.2-42.9 14.3L256 419.8 78.3 508.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9L184.4 384 49.7 316.6c-15.8-7.9-22.2-27.1-14.3-42.9z"/></svg>
+                        <svg class="exclamation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 512"><path d="M96 64c0-17.7-14.3-32-32-32S32 46.3 32 64V320c0 17.7 14.3 32 32 32s32-14.3 32-32V64zM64 480c22.1 0 40-17.9 40-40s-17.9-40-40-40s-40 17.9-40 40s17.9 40 40 40z"/></svg>
+                    </div>
+
+                    <div class="heatmap" id="heatmap"></div>
+
+                </div>
+
+            </div>
+                
+        </div>
+
+        <script src="heatmap.min.js"></script>
+
+        <script>
+
+            const nukeOptions = { radius: 50, maxOpacity: .6, minOpacity: .3 }
+            const nukeData = [[731,583],[745,584],[774,588],[807,590],[1165,676],[1119,664],[1097,662],[1043,658],[986,665],[943,664],[983,658],[1058,678],[46,603],[82,596],[107,597]];
+
+            const chemOptions = { radius: 15, maxOpacity: .8, minOpacity: .4, gradient: { '.8': 'purple' }, }
+            const chemData= [[694,571],[684,577],[673,589],[671,593],[665,603],[659,620],[655,640],[655,653],[653,666],[652,675],[651,678],[663,617],[677,590],[704,577],[717,570],[723,569],[738,570],[749,579],[756,584],[764,593],[770,603],[774,619],[780,638],[780,651],[782,658],[786,673],[788,684],[787,689],[786,693],[734,584],[713,588],[695,598],[676,612],[683,613],[719,600],[733,596],[684,604],[696,603],[725,601],[739,606],[757,608],[761,618],[761,617],[703,600],[698,599],[722,594],[751,602],[743,601],[683,589],[691,589],[739,590],[756,599],[681,628],[672,639],[668,643],[655,639],[655,631],[650,627],[708,541],[706,552],[715,512],[717,513],[715,545],[713,547],[715,528],[716,522],[719,543],[718,549],[722,531],[723,512],[723,499],[724,487],[723,477],[723,467],[718,459],[712,486],[713,509],[720,533],[722,544],[731,544],[736,507],[738,495],[737,484],[736,491],[733,525],[734,528],[739,480],[739,468],[735,455],[727,446],[719,439],[716,427],[717,407],[723,393],[730,399],[726,430],[726,449],[736,433],[739,403],[745,389],[734,411],[736,431],[734,449],[735,473],[743,505],[743,529],[739,544],[735,562],[735,571],[735,576],[729,595],[722,608],[718,618],[696,600],[693,612],[699,624],[695,628],[723,625],[750,625],[741,628],[700,628],[713,628],[759,628],[702,633],[682,634],[707,634],[745,390],[774,394],[771,395],[749,393],[772,391],[781,386],[761,387],[806,376],[798,377],[775,379],[795,383],[798,384],[779,395],[793,395],[796,395]];
+
+            const gasOptions = { radius: 30, maxOpacity: .6, minOpacity: .3, gradient: { '.6': 'white', '.3': 'gray'}}
+            const gasData=[[26,474],[45,472],[74,471],[106,469],[129,466],[180,464],[201,460],[231,458],[253,456],[279,454],[307,453],[330,452],[359,450],[381,448],[405,444],[148,468],[159,466],[167,466],[48,467],[65,457],[80,439],[91,421],[95,413],[106,449],[153,445],[177,435],[203,429],[294,440],[308,432],[321,417],[395,434],[412,419],[415,404]];
+
+            const bg = document.getElementById('background');
+            const tt = document.getElementById('tooltips');
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const tooltips = Array.from(document.querySelectorAll(".tooltip .circle"));
+                tooltips.forEach(tooltip => {
+                    tooltip.addEventListener("click", (e) => {
+                        const parent = e.target.parentElement;
+                        tooltips.forEach(t => t.parentElement.classList.remove("tooltip--active"))
+                        parent.classList.toggle("tooltip--active");
+                    });
+                });
+            });
+
+            function changeExample(example) {
+                document.getElementById("heatmap").remove();
+                bg.removeAttribute("class")
+                bg.classList.add("background", example);
+                tt.removeAttribute("class");
+                tt.classList.add("tooltips", example);
+                loadHeatmapData(example)
+            }
+
+            function loadHeatmapData(example) {
+
+                let data = undefined;
+                let options = undefined;
+
+                if (example === "nuclear") {
+                    data = nukeData;
+                    options = nukeOptions;
+                } else if (example === "chemical") {
+                    data = chemData;
+                    options = chemOptions;
+                } else if (example === "gas") {
+                    data = gasData;
+                    options = gasOptions;
+                }
+
+                const newHeatmap = document.createElement("div");
+                newHeatmap.id = "heatmap";
+                newHeatmap.classList.add("heatmap");
+
+                bg.appendChild(newHeatmap)
+
+                const heatmapJs = h337.create({
+                    container: document.querySelector('.heatmap'),
+                    ...options
+                });
+
+                data?.forEach(d => heatmapJs.addData({ x: d[0], y: d[1], value: 1 }));
+
+            }
+
+        </script>
+
+    </body>
+
+</html>
