@@ -47,10 +47,22 @@ body {
     width: 120rem;
     height: 80rem;
     left: 50%;
-    top: 10rem;
+    top: 12rem;
     transform: translate(-50%, 0);
     border: 3px solid var(--black);
     overflow: hidden;
+}
+
+.view:before {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 3rem;
+    content: '';
+    color: var(--white);
+    z-index: 20;
 }
 
 .view .header,
@@ -116,24 +128,61 @@ body {
     z-index: -1;
 }
 
-.background.nuclear {
+.nuclear .background {
     background: url(img/nuclear.jpg) no-repeat left center;
     background-size: cover;
 }
 
-.background.chemical {
+.nuclear:before {
+    content: 'Nuclear';
+}
+
+.chemical .background {
     background: url(img/chemical.jpeg) no-repeat left center;
     background-size: cover;
 }
 
-.background.gas {
+.chemical:before {
+    content: 'Chemical';
+}
+
+.gas .background {
     background: url(img/gas.jpeg) no-repeat left center;
     background-size: cover;
 }
 
-.background.start {
+.gas:before {
+    content: 'Gas';
+}
+
+.start .background {
     background: url(img/start.jpg) no-repeat left center;
     background-size: cover;
+}
+
+.start:before {
+    content: 'Overview';
+}
+
+.command .background {
+    background: url(img/command.png) no-repeat left center;
+    background-size: cover;
+}
+
+.command:before {
+    content: 'Command';
+}
+
+.command .command-tips {
+    display: block;
+}
+
+.command .goggles,
+.command .global,
+.command .info,
+.command .warning,
+.command .goggle-tips {
+    display: none;
 }
 
 .start .info,
@@ -520,7 +569,7 @@ body {
     transform: translateX(-50%);
     display: grid;
     gap: 2rem;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 }
 
 .examples button {
@@ -538,7 +587,9 @@ body {
 .examples button:hover {
     background: #666;
 }
-
+.command-tips {
+    display: none;
+}
 .tooltips {
     position: absolute;
     width: 100%;
@@ -667,6 +718,24 @@ body {
     top: 31rem;
     left: 20rem;
 }
+
+.tooltip--command1 {
+    top: 56rem;
+    left: 52rem;
+}
+.tooltip--command2 {
+    top: 32rem;
+    left: 97rem;
+}
+.tooltip--command3 {
+    top: 27rem;
+    left: 66rem;
+}
+.tooltip--command4 {
+    top: 33rem;
+    left: 40rem;
+}
+
 .tooltip .title {
     font-weight: 700;
     text-transform: uppercase;

@@ -18,10 +18,11 @@
                 <button onclick="changeExample('nuclear')">Nuclear</button>
                 <button onclick="changeExample('chemical')">Chemical</button>
                 <button onclick="changeExample('gas')">Gas</button>
+                <button onclick="changeExample('command')">Command</button>
                 <button onclick="changeExample('start')">Reset</button>
             </div>
 
-            <div class="view">
+            <div class="view start" id="view">
 
                 <div class="goggles">
                     <div class="upper"></div>
@@ -68,95 +69,126 @@
                     </div>
                 </div>
 
-                <div class="tooltips start" id="tooltips">
-                    <div class="tooltip tooltip--connection">
-                        <div class="circle"></div>
-                        <div class="text">
-                            <div class="title">Connection</div>
-                            Indicates device's connection status with home hub
+                <div class="tooltips" id="tooltips">
+                    <div class="goggle-tips">
+                        <div class="tooltip tooltip--connection">
+                            <div class="circle"></div>
+                            <div class="text">
+                                <div class="title">Connection</div>
+                                Indicates device's connection status with home hub
+                            </div>
+                        </div>
+                        <div class="tooltip tooltip--battery">
+                            <div class="circle"></div>
+                            <div class="text">
+                                <div class="title">Battery</div>
+                                Indicates device's available battery
+                            </div>
+                        </div>
+                        <div class="tooltip tooltip--location">
+                            <div class="circle"></div>
+                            <div class="text">
+                                <div class="title">Location</div>
+                                Indicates devices's current location in latitude, longitude, and altitude. Also provides bearing of where the device is pointing
+                            </div>
+                        </div>
+                        <div class="tooltip tooltip--home">
+                            <div class="circle"></div>
+                            <div class="text">
+                                <div class="title">Home</div>
+                                Indicates direction and distance of device's home hub
+                            </div>
+                        </div>
+                        <div class="tooltip tooltip--temp">
+                            <div class="circle"></div>
+                            <div class="text">
+                                <div class="title">Temperature</div>
+                                Indicates immediate temperature of area around device
+                            </div>
+                        </div>
+                        <div class="tooltip tooltip--mark">
+                            <div class="circle"></div>
+                            <div class="text">
+                                <div class="title">Marking</div>
+                                Clues user to physical button on device to mark a geolocation using infrared beams mounted at top of goggles
+                            </div>
+                        </div>
+                        <div class="tooltip tooltip--actions">
+                            <div class="circle"></div>
+                            <div class="text">
+                                <div class="title">Actions</div>
+                                Clues users to action menu and physical dial to navigate options available
+                            </div>
+                        </div>
+                        <div class="tooltip tooltip--tracker">
+                            <div class="circle"></div>
+                            <div class="text">
+                                <div class="title">Eye Tracking</div>
+                                Eye tracking technology to help device understand what the user is looking at
+                            </div>
+                        </div>
+                        <div class="tooltip tooltip--outline">
+                            <div class="circle"></div>
+                            <div class="text">
+                                <div class="title">Goggle Outline</div>
+                                Where the device's lenses meets the frame
+                            </div>
+                        </div>
+                        <div class="tooltip tooltip--data">
+                            <div class="circle"></div>
+                            <div class="text">
+                                <div class="title">Detection Data</div>
+                                Detects HAZMAT threat and renders easy to read data for quick understanding
+                            </div>
+                        </div>
+                        <div class="tooltip tooltip--heatmap">
+                            <div class="circle"></div>
+                            <div class="text">
+                                <div class="title">Heatmap</div>
+                                Visualizes HAZMAT dangers by using customized heatmaps to show the extent and size of threat
+                            </div>
+                        </div>
+                        <div class="tooltip tooltip--symbol">
+                            <div class="circle"></div>
+                            <div class="text">
+                                <div class="title">Symbology</div>
+                                Utilizes appropriate symbols and iconography to provide immediate threat identity
+                            </div>
                         </div>
                     </div>
-                    <div class="tooltip tooltip--battery">
-                        <div class="circle"></div>
-                        <div class="text">
-                            <div class="title">Battery</div>
-                            Indicates device's available battery
+                    <div class="command-tips">
+                        <div class="tooltip tooltip--command1">
+                            <div class="circle"></div>
+                            <div class="text">
+                                <div class="title">Heatmaps</div>
+                                Visualizes detected HAZMAT dangers by plotting geolocation of threats on map
+                            </div>
+                        </div>
+                        <div class="tooltip tooltip--command2">
+                            <div class="circle"></div>
+                            <div class="text">
+                                <div class="title">Route Safety Detection</div>
+                                AI works to find safe routes away and around hazards after personnel on ground locate problems
+                            </div>
+                        </div>
+                        <div class="tooltip tooltip--command3">
+                            <div class="circle"></div>
+                            <div class="text">
+                                <div class="title">Unit Location Tracking</div>
+                                Unit positions update in real-time to allow commander situational awareness of immediate operating area
+                            </div>
+                        </div>
+                        <div class="tooltip tooltip--command4">
+                            <div class="circle"></div>
+                            <div class="text">
+                                <div class="title">Symbology</div>
+                                Utilizes appropriate symbols and iconography to provide threat identification at a glance
+                            </div>
                         </div>
                     </div>
-                    <div class="tooltip tooltip--location">
-                        <div class="circle"></div>
-                        <div class="text">
-                            <div class="title">Location</div>
-                            Indicates devices's current location in latitude, longitude, and altitude. Also provides bearing of where the device is pointing
-                        </div>
-                    </div>
-                    <div class="tooltip tooltip--home">
-                        <div class="circle"></div>
-                        <div class="text">
-                            <div class="title">Home</div>
-                            Indicates direction and distance of device's home hub
-                        </div>
-                    </div>
-                    <div class="tooltip tooltip--temp">
-                        <div class="circle"></div>
-                        <div class="text">
-                            <div class="title">Temperature</div>
-                            Indicates immediate temperature of area around device
-                        </div>
-                    </div>
-                    <div class="tooltip tooltip--mark">
-                        <div class="circle"></div>
-                        <div class="text">
-                            <div class="title">Marking</div>
-                            Clues user to physical button on device to mark a geolocation using infrared beams mounted at top of goggles
-                        </div>
-                    </div>
-                    <div class="tooltip tooltip--actions">
-                        <div class="circle"></div>
-                        <div class="text">
-                            <div class="title">Actions</div>
-                            Clues users to action menu and physical dial to navigate options available
-                        </div>
-                    </div>
-                    <div class="tooltip tooltip--tracker">
-                        <div class="circle"></div>
-                        <div class="text">
-                            <div class="title">Eye Tracking</div>
-                            Eye tracking technology to help device understand what the user is looking at
-                        </div>
-                    </div>
-                    <div class="tooltip tooltip--outline">
-                        <div class="circle"></div>
-                        <div class="text">
-                            <div class="title">Goggle Outline</div>
-                            Where the device's lenses meets the frame
-                        </div>
-                    </div>
-                    <div class="tooltip tooltip--data">
-                        <div class="circle"></div>
-                        <div class="text">
-                            <div class="title">Detection Data</div>
-                            Detects HAZMAT threat and renders easy to read data for quick understanding
-                        </div>
-                    </div>
-                    <div class="tooltip tooltip--heatmap">
-                        <div class="circle"></div>
-                        <div class="text">
-                            <div class="title">Heatmap</div>
-                            Visualizes HAZMAT dangers by using customized heatmaps to show the extent and size of threat
-                        </div>
-                    </div>
-                    <div class="tooltip tooltip--symbol">
-                        <div class="circle"></div>
-                        <div class="text">
-                            <div class="title">Symbology</div>
-                            Utilizes appropriate symbols and iconography to provide immediate threat identity
-                        </div>
-                    </div>
-
                 </div>
     
-                <div class="background start" id="background">
+                <div class="background" id="background">
 
                     <div class="info info--nuclear">
                         <div class="line"></div>
@@ -219,6 +251,10 @@
             const gasOptions = { radius: 30, maxOpacity: .6, minOpacity: .3, gradient: { '.6': 'white', '.3': 'gray'}}
             const gasData=[[26,474],[45,472],[74,471],[106,469],[129,466],[180,464],[201,460],[231,458],[253,456],[279,454],[307,453],[330,452],[359,450],[381,448],[405,444],[148,468],[159,466],[167,466],[48,467],[65,457],[80,439],[91,421],[95,413],[106,449],[153,445],[177,435],[203,429],[294,440],[308,432],[321,417],[395,434],[412,419],[415,404]];
 
+            const commandOptions = { radius: 15, maxOpacity: .6, minOpacity: .3 }
+            const commandData = [[380,416],[388,405],[384,403],[375,409],[488,317],[492,326],[496,334],[489,335],[449,306],[454,296],[445,281],[446,285],[526,397],[517,405],[525,410],[599,258],[587,251],[595,244],[602,248],[583,321],[580,325],[726,251],[732,262],[737,270],[741,276],[529,144],[515,146],[521,152],[502,154],[509,156],[596,383],[601,395],[598,390],[681,388],[690,377],[686,386],[717,133],[699,132],[706,132],[357,481],[348,490],[348,496],[530,547],[536,562],[543,576],[546,583],[538,567],[534,555],[531,546],[527,526],[525,529],[541,537],[546,547]];
+
+            const view = document.getElementById('view');
             const bg = document.getElementById('background');
             const tt = document.getElementById('tooltips');
 
@@ -231,14 +267,13 @@
                         parent.classList.toggle("tooltip--active");
                     });
                 });
+
             });
 
             function changeExample(example) {
                 document.getElementById("heatmap").remove();
-                bg.removeAttribute("class")
-                bg.classList.add("background", example);
-                tt.removeAttribute("class");
-                tt.classList.add("tooltips", example);
+                view.removeAttribute("class");
+                view.classList.add("view", example);
                 loadHeatmapData(example)
             }
 
@@ -256,6 +291,9 @@
                 } else if (example === "gas") {
                     data = gasData;
                     options = gasOptions;
+                } else if (example === 'command') {
+                    data = commandData;
+                    options = commandOptions;                    
                 }
 
                 const newHeatmap = document.createElement("div");
